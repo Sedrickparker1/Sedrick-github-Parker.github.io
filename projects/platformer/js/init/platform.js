@@ -5,10 +5,9 @@
     
     let platform = window.opspark.platform;
     createPlatform(400, 460); 
-    createPlatform(300, 200, 0.3);
-    createPlatform(500, 200, 0.3, 10);
-    createPlatform(580, 200, 0.3, 10);
-    
+    createPlatform(300, 200);
+    createPlatform(400, 460); 
+    createPlatform(500, 500, 0.3, 10);
     /**
      * init: This function initializes the platforms for the level.
      * 
