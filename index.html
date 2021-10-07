@@ -1,6 +1,84 @@
 <!DOCTYPE HTML>
 <html>
     <head>
+        <style type="text/css">
+            body {
+                background: rgb(125, 198, 205);
+                color: rgb(45, 45, 45);
+                padding: 10px;
+                font-family: arial;
+            }
+            header {
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+            
+            #all-contents {
+                max-width: 800px;
+                margin: auto;
+            }
+    
+            /* navigation menu */
+            nav {
+                background: rgb(239, 80, 41);
+                margin: 0 auto;
+                display: flex;
+                padding: 10px;
+            }
+            h1 {
+                display: flex;
+                align-items: center;
+                color: rgb(255, 255, 255);
+                flex: 1;
+            }
+            #nav-ul {
+                list-style-image: none;
+            }
+            .nav-li {
+                display: inline-block;
+                padding: 0 10px;
+            }
+            .nav-a {
+                text-decoration: none;
+                color: #fff;
+            }
+    
+            /* main container area beneath menu */
+            main {
+                background: rgb(245, 238, 219);
+                display: flex;
+            }
+            .content {
+                flex: 1;
+                padding: 15px;
+            }            /* portfolio styles */
+                .content h1 {
+                    color: black;
+                }
+                
+                #portfolio {
+                    list-style-type: none;
+                    padding-left: 0;
+                }
+                
+                #portfolio li {
+                    background: #fff;
+                    padding: 10px;
+                    border-radius: 10px;
+                    margin-bottom: 10px;
+                }
+                
+                #portfolio li:hover {
+                    background: #eee;
+                } 
+                
+                #portfolio a {
+                    text-decoration: none;
+                    color: #454545;
+                }
+    
+        </style>
+            <title>Sedrick's website .....
         <style>
             body {
                 background: rgb(125, 198, 205);
@@ -70,7 +148,7 @@
          <!-- All content goes here-->
         <div id="all-contents">
             <nav> 
-                <h1>Sedrick's Life</h1>
+                <h1>Sedrick's Webisite</h1>
                 <ul id="nav-ul">
                     <li class="nav-li">
                         <a href="index.html"> Home</a>
@@ -81,9 +159,9 @@
                 </ul>
             </nav>
             <main>
-                <div class="sidebar">
+           <div class="sidebar">
                     <!--Sidebar secttion-->
-                    <img class="sidebar-img" src ="https://static.wikia.nocookie.net/spongebob/images/7/79/Jenkins_%282%29.png/revision/latest?cb=20210324015056">
+                    <img class="sidebar-img" src ="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAilBMVEX///89Ozw4Njf8/Pw0MjO0tLTa2NleXl4pJyg3Nzf39/cvLC0xMTGhoaFzc3Pl5eXr6+uXl5eGhIWNjo4zMDIoKCjz8/MtKixsbGxkZGSurq57e3vf398mIyW+vr7p6elYVlfLy8vQ0NBPT09IRkdCQEGKiorDwcIhHiCdm5ynpqdNS0xxcHGAfn85jWx8AAAEvklEQVR4nO3cC1fiOhAH8MwkRdoUebWUQstTEES+/9e7KSJXr5XtXoMNPf/f7jlblcOZMenkVVYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIBfJOsO4GZG3XmRnGxsip04j+N0Mqo7jpvxciKfWNOkqf10zBSGmomTx0DIBuYon0h78+U0YYrSBiYoRVdTOzNX3QdFelt3PLfwrIll0TuDVFHeqjucG9hHnJoETfccPZE/rjsc66QpNFFfvFXRWezH3bojss8n/Xy+DA6sJ7UGcwvdmPS53aSYcjRo3Ji41BSeL6XoKDVuXIb90E/Pl0WG3LwMx37YP19KcVRqUGs0t7DheHa+lOKB9UvT2rDbvhQaMyAytVd1RnMLzwk/Be9ftEy6DVtDSTOjMYXmvV96mta1xmOflItiRvOe4UCpaa3x3MA+ofby8tXaN4WmWbKQPrTayKe4aYUmNZPS3uWrlqZdcOXVd8iLqf1hpj0JieoLxj4pe4o4/fCdgfLLCs3dzgDMSkKRzj4ksGja2mkZc7IXwSXDoE38OPyP7bDv3eUkoNiWIfbX8sM3zIyGWH0WmT96NwjE3VUgk9lW8eexYbJTXzEzUbS4v2Y8tZg6fqoik+OgxPaVFYXpt+/kKinXxJtRpToZTDW1vZuH9L/0+tNSw0x0NLefq40EUqRMCydHjflG+yW3lvLD0PNJPVYMWhZ7OS5OdqQYaDLJfKWINFHYq9wo84jac/eONKQZwflx3/9qYMojJZOq3U6KLKFdz71eetp1mZX95DTwPVQ+SJPFTRvZDM0ak2FpCSwyDLMq7/D2O2gpitzcgruSYbiv9A5SjLqtvenUutIv5NddyVAF1caJZax1ZCY1jg6HVzL0KxV/U46joioRLzInz79/nGFxqtFOkoSJ2cFaaqMNzQqk1+utpsnnpbIzLLTh2V65uUdlL0MzeQiHNkKyzGKGnX/P4FxiMcOJbnqGR9/J/X5bGZqpt6Lyt6qZhRH/bQxcbYh8F7dqLIyHo/70eFyERLnXzBFf9HPls29Wk/0/v7oGFu7Dfa6UmZeGLt6EwkqGwctwsFHkPzjYRYW1Whpsnd1NtDYejpkXViKyzVKGUqwS2lVaMv82WxnKXkR5t5GjxZnMNOXVTgB+mbX7cM+k7IRkmYUR/2SlycnVoY02HGVZdzWMiNTcamS2/DjD0SE2zKQmLt07r9+PM1zt6IRnLpYZYeM+TOOkOOTOnDw8FHZWT62jJn50cjtY2Bothop2WVPbUJyW+QdWnTvMsGrEpntuFbu4C1W4kiF3ij2YCneXeUk/cnKfrXDthDQ5zCoVSFk8iaGG99dLaUPxutoDa57mfHmHGYbFJ3/51Wv9Yd0XeGbOdrhJeBZcyXCzTBMzG1O6zYv09fFbrwdNlLt47HTywNHLqPfVUhejxWqaJIqJyf+eaWliVyelbw9rFU9TRtHl7+mfIq1NMR6OZse1jnXZQ0UXcTx29oOzUsxyKsWU98879rK3mk1eOt968brC1UlpEVZnl5faHeXpg7/VnseQjk5KT2S3lINP4cHfae7/YQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABwv/4Bn7FIegiugEMAAAAASUVORK5CYII=">
                 </div>
                 <!--Content section-->
                 <div class="content">
