@@ -35,12 +35,9 @@
         
         ////////////////////////////////////////////////////////////////////////
         // ALL YOUR CODE GOES BELOW HERE ///////////////////////////////////////
-        createCollectable(type.steve, 200, 170, 6, 0.7);
-        createCollectable(type.grace,200,150,4, 0.8);
-        createCollectable(type.max,250,115,6,0.7);
-        createCollectable(type.steve,100,200,7,0.7);
-        createCollectable(type.grace,115,160,9,0.7);
-        createCollectable(type.kennedy,250,140,2,0.7);
+        createCollectable(type.steve, 25, 180, 6, 0.7);
+        createCollectable(type.grace,115,150,4, 0.8);
+        createCollectable(type.grace,80,90,3,0.3)
         // example: 
         createCollectable(type.steve, 200, 170, 6, 0.7);
 
