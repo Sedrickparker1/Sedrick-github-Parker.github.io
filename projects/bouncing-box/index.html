@@ -8,7 +8,7 @@
 		.box {
 			width: 70px;
 			height: 70px;
-			background-color: red;
+			background-color: darkblue;
 			font-size: 300%;
 			text-align: center;
 			display: block;
@@ -18,8 +18,8 @@
 		}
 		.board{
 			height: 100vh;
-			background-color: black;
-			
+			background-image:url("https://2.bp.blogspot.com/-KTI9IhSd3ys/UkFepc9yihI/AAAAAAAABMs/mrlerWDucec/s1600/amazing+background+wallpapers+3.jpg");
+			background-repeat: no-repeat;
 		}
 	</style>
 	<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
@@ -40,23 +40,29 @@
 			
 			var box = jQuery('.box');	// reference to the HTML .box element
 			var board = jQuery('.board');	// reference to the HTML .board element
-			var boardWidth = board.width();	// the maximum X-Coordinate of the screen
-
+			var boardWidth = board.width();	// the maximum X-Coordinate of the screen 
+			var randomNumberBetween0and10 = Math.random() * 10;
+			var boardHeight = jQuery(window).height();
+			
 			// Every 50 milliseconds, call the update Function (see below)
-			setInterval(update, 50);
+			var interval = setInterval(update, 50);
 			
 			// Every time the box is clicked, call the handleBoxClick Function (see below)
 			box.on('click', handleBoxClick);
 
 			// moves the Box to a new position on the screen along the X-Axis
-			function moveBoxTo(newPositionX) {
+			function moveBoxTo(newPositionX,newPositionY) {
 				box.css("left", newPositionX);
-			}
+				box.css("top", newPositionY);
+				
+				
+			}	
 
 			// changes the text displayed on the Box
 			function changeBoxText(newText) {
 				box.text(newText);
 			}
+			
 
 			//////////////////////////////////////////////////////////////////
 			/////////////////// YOUR CODE BELOW HERE /////////////////////////
@@ -64,24 +70,37 @@
 			
 			// TODO 2 - Variable declarations 
 			var positionX = 0;
+			var positionY = 0;
 			var points = 0;
 			var speed = 10;
+			var speedY = 10;
+			var boardHeight = jQuery(window).height(); 
+
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
 			it should move the Box to a new location. If the box drifts off the screen
 			turn it around! 
 			*/
 			function update() {
-				positionX = positionX + speed;
-				moveBoxTo(positionX);
-				if (positionX > boardWidth) {
-					speed = -speed;
-				} 
-				if  (positionX < 0) {
-					speed = 20;
+				positionX += speed;
+				positionY += speedY;
+				moveBoxTo(positionX, positionY);
+
+				if (positionX > boardWidth){
+					speed -= 10;
 				}
-		
-			};
+				if (positionX < 0){
+					speed += 10;
+				}
+				if (positionY > boardHeight){
+					speedY -= 10;
+				}
+				else if (positionY < 0){
+					speedY += 10;
+				}
+
+			}	
+			
 
 			/* 
 			This Function will be called each time the box is clicked. Each time it is called,
@@ -90,12 +109,20 @@
 			*/
 			function handleBoxClick() {
 				positionX = 0;
+				speed += 3;
 				points = points + 1;
-				speed = speed + 3;
 				changeBoxText(points);
 
+				if (speed -= 3){
+					speed += 3;
+				}
+				else if (speed += 3){
+					speed -= 3;
+				}
 
-			};
+
+				
+			}
 		})();
 	</script>
 </body>
