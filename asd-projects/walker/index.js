@@ -96,11 +96,18 @@ function runProgram(){
     else if (positionX < 0){
       positionX = 0;
     }
+    else if (positionX > BOARD_HEIGHT){
+      positionX = BOARD_HEIGHT;
+    }
     else if (positionY > BOARD_HEIGHT){
-      positionY = BOARD_HEIGHT;
+      positionY = 0;
     }else if (positionY < 0){
       positionY = 0;
+     }else if (positionY > BOARD_WIDTH ){
+       positionX = 0;
+
      }
+
    }
 
   ////////////////////////////////////////////////////////////////////////////////
@@ -115,9 +122,8 @@ function runProgram(){
   
   function redrawGameItem(){
     $('#walker').css('top', positionY);
-    $('#walker').css('bottom', positionY);
     $('#walker').css('left', positionX);
-    $('#walker').css('right', positionX);
+    
   }
   function endGame(){
     // stop the interval timer
