@@ -2,7 +2,7 @@
 
 $(document).ready(runProgram); // wait for the HTML / CSS elements of the page to fully load, then execute runProgram()
 function runProgram(){
-  ////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////
   //////////////////////////// SETUP /////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
 
@@ -18,21 +18,11 @@ function runProgram(){
     'UP':38,
     'DOWN':40,
     'RIGHT':39,
-
-    'LEFT2':65,
-    'RIGHT2':68,
-    'DOWN2': 83,
-    'UP2':87,
   }
   var positionX = 0;
   var positionY = 0;
   var speedX = 0;
   var speedY = 0;
-
-  var positionY2 = 0;
-  var positionX2 = 0;
-  var speedX2 = 0;
-  var speedY2 = 0;
 
   var BOARD_WIDTH = $('#board').width() - $('#walker').width();
   var BOARD_HEIGHT = $('#board').height() - $('#walker').height();
@@ -58,8 +48,6 @@ function runProgram(){
     redrawGameItem();
     stopBall();
   }
- 
-
   /* 
   Called in response to events.
   */
@@ -80,17 +68,9 @@ function runProgram(){
     }else if (event.which === KEY.LEFT){
       speedX = -5;
       console.log("Left pressed");
-    }else if (event.which === KEY.LEFT2){
-     speedX2 = - 5;
-    }else if (event.which === KEY.RIGHT2){
-      speedX2 = 5;
-    }else if (event.which === KEY.UP2){
-      speedY2 = -5;
-    }else if (event.which === KEY.DOWN2){
-      speedY2 = 5;
     }
-
   }
+
 
   // Ensures the walker stops when the user isnt attempting to move the game items
   function handleKeyUp(event){
@@ -106,66 +86,45 @@ function runProgram(){
     }else if (event.which === KEY.DOWN){
       speedX = 0;
       speedY = 0;
-    }else if (event.which === KEY.LEFT2){
-      speedX2 = 0;
-    }
-    else if (event.which === KEY.RIGHT2){
-      speedX2 = 0;
-    }else if (event.which === KEY.UP2){
-      speedY2 = 0;
-    }else if (event.which === KEY.DOWN2){
-      speedY2 = 0;
     }
   }
 
   function stopBall(){
     if(positionX > BOARD_WIDTH){
-      speedX = -5;
-    }else if (positionX < 0){
-      speedX = 5;
-    }else if(positionX2 > BOARD_WIDTH){
-      speedX2 = -5;
-    }else if (positionX2 < 0){
-      speedX2 = 5;
-    }else if (positionY > BOARD_HEIGHT){
-      speedY = -5;
+      positionX = BOARD_WIDTH;
+    }
+    else if (positionX < 0){
+      positionX = 0;
+    }
+    else if (positionY > BOARD_HEIGHT){
+      positionY = BOARD_HEIGHT;
     }else if (positionY < 0){
-      speedY = 5;
-    }else if (positionY2 > BOARD_HEIGHT){
-      speedY2 = -5;
-    }
-    else if (positionY2 < 0){
-      speedY2 = 5;
-
-    }
+      positionY = 0;
+   }
   }
 
-   
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
 
   function repositionGameItem(){
 // Added a player 2 to the reposition function
-     positionX2 += speedX2;
-     positionY2 += speedY2;
      positionX += speedX;
      positionY += speedY;
-  } 
+  }
+  
   function redrawGameItem(){
     $('#walker').css('top', positionY);
     $('#walker').css('bottom', positionY);
     $('#walker').css('left', positionX);
     $('#walker').css('right', positionX);
-    $('#walker2').css('top', positionY2);
-    $('#walker2').css('bottom', positionY2);
-    $('#walker2').css('left', positionX2);
-    $('#walker2').css('right', positionX2);
-
   }
-  function endGame() {
+  function endGame(){
     // stop the interval timer
     clearInterval(interval);
     // turn off event handlers
     $(document).off();
-  }}
+  }
+
+
+}
