@@ -8,7 +8,7 @@ background-position: center;
   width: 440px;
   height: 440px;
   border: 5px solid gold;
-  position: relative;
+  position: absolute;
   background-color: darkgreen;
 }
 #walker {
@@ -16,7 +16,7 @@ background-position: center;
   width: 50px;
   height: 50px;
   border-radius:50px;
-  position: absolute;
+  position: relative;
  left: 100px;
  top: 100px;  
 }
@@ -25,9 +25,9 @@ background-position: center;
   width: 50px;
   height:50px;
   border-radius:50px;
-  position:absolute;
-  left: 70px;
-  top: 70px;
+  position:relative;
+  left: 100px;
+  top: 100px;
 
 
 

@@ -33,6 +33,10 @@ function runProgram(){
   var positionX2 = 0;
   var speedX2 = 0;
   var speedY2 = 0;
+
+  var BOARD_WIDTH = $('#board').width() - $('#walker').width();
+  var BOARD_HEIGHT = $('#board').height() - $('#walker').height();
+
   
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
@@ -52,7 +56,9 @@ function runProgram(){
   function newFrame(){
     repositionGameItem();
     redrawGameItem();
+    stopBall();
   }
+ 
 
   /* 
   Called in response to events.
@@ -111,7 +117,30 @@ function runProgram(){
       speedY2 = 0;
     }
   }
-  
+
+  function stopBall(){
+    if(positionX > BOARD_WIDTH){
+      speedX = -5;
+    }else if (positionX < 0){
+      speedX = 5;
+    }else if(positionX2 > BOARD_WIDTH){
+      speedX2 = -5;
+    }else if (positionX2 < 0){
+      speedX2 = 5;
+    }else if (positionY > BOARD_HEIGHT){
+      speedY = -5;
+    }else if (positionY < 0){
+      speedY = 5;
+    }else if (positionY2 > BOARD_HEIGHT){
+      speedY2 = -5;
+    }
+    else if (positionY2 < 0){
+      speedY2 = 5;
+
+    }
+  }
+
+   
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
