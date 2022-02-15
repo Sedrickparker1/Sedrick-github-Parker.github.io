@@ -100,21 +100,21 @@ function runProgram(){
       positionX = BOARD_HEIGHT;
     }
     else if (positionY > BOARD_HEIGHT){
+      positionY = BOARD_HEIGHT;
+    }
+    else if (positionY < 0){
       positionY = 0;
-    }else if (positionY < 0){
-      positionY = 0;
-     }else if (positionY > BOARD_WIDTH ){
-       positionX = 0;
-
      }
-
+     else if (positionY > BOARD_WIDTH ){
+       positionY = BOARD_WIDTH;
+     }
    }
 
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
 
-  function repositionGameItem(){
+  function repositionGameItem(positionX, positionY){
 // Added a player 2 to the reposition function
      positionX += speedX;
      positionY += speedY;
