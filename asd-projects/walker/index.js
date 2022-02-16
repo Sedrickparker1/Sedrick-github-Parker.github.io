@@ -33,6 +33,7 @@ function runProgram(){
   $(document).on('keydown', handleKeyDown);
 
   $(document).on('keyup', handleKeyUp);
+ 
   
   // change 'eventType' to the type of event you want to handle
 
@@ -46,7 +47,8 @@ function runProgram(){
   function newFrame(){
     repositionGameItem();
     redrawGameItem();
-    stopBall();
+    stopBallNow();
+    
   }
   /* 
   Called in response to events.
@@ -54,20 +56,21 @@ function runProgram(){
 
   // controls the movement of the walker game items , Player1 and Player2
   function handleKeyDown(event){
-    if (event.which === KEY.ENTER){
-      console.log("Enter pressed");
-    }else if (event.which === KEY.UP){  
-      speedY = -5;
-      console.log("Up pressed");
-    }else if (event.which === KEY.DOWN){ 
-      speedY = 5;
-      console.log("Down pressed");
-    }else if (event.which === KEY.RIGHT){
-      speedX = 5;
-      console.log("Right pressed");
-    }else if (event.which === KEY.LEFT){
+    if (event.which === KEY.LEFT){
       speedX = -5;
-      console.log("Left pressed");
+      console.log('left is pressed')
+    }
+    else if (event.which === KEY.RIGHT){
+      speedX = 5;
+      console.log('Right is pressed')
+    }
+    else if (event.which === KEY.UP){
+      speedY = -5;
+      console.log('Up is pressed')
+    }
+    else if(event.which === KEY.DOWN){
+      speedY = 5;
+      console.log('Down is pressed')
     }
   }
 
@@ -76,46 +79,37 @@ function runProgram(){
   function handleKeyUp(event){
     if (event.which === KEY.LEFT){
       speedX = 0;
-      speedY = 0;
     }else if (event.which === KEY.RIGHT){
       speedX = 0;
-      speedY = 0;
     }else if (event.which === KEY.UP){
-      speedX = 0;
       speedY = 0;
     }else if (event.which === KEY.DOWN){
-      speedX = 0;
       speedY = 0;
     }
   }
-
-  function stopBall(){
-    if(positionX > BOARD_WIDTH){
-      positionX = BOARD_WIDTH;
+// This seemed to counter the glitch  , restrics the user to the leave the box
+  function stopBallNow(){
+    if (positionX > BOARD_WIDTH){
+       positionX = BOARD_WIDTH -5;
     }
-    else if (positionX < 0){
-      positionX = 0;
+    else if(positionX < 0){
+      positionX = 5;
     }
-    else if (positionX > BOARD_HEIGHT){
-      positionX = BOARD_HEIGHT;
-    }
-    else if (positionY > BOARD_HEIGHT){
+    else if (positionY > BOARD_HEIGHT -5){
       positionY = BOARD_HEIGHT;
     }
     else if (positionY < 0){
-      positionY = 0;
-     }
-     else if (positionY > BOARD_WIDTH ){
-       positionY = BOARD_WIDTH;
-     }
-   }
+      positionY = 5;
+
+    }  
+ }
 
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
 
-  function repositionGameItem(positionX, positionY){
-// Added a player 2 to the reposition function
+  function repositionGameItem(){
+//Repositions the gameItem 
      positionX += speedX;
      positionY += speedY;
   }
@@ -131,6 +125,4 @@ function runProgram(){
     // turn off event handlers
     $(document).off();
   }
-
-
 }

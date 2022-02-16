@@ -1,13 +1,13 @@
 
 body {
-  background-color:black;
+  background-color:goldenrod;
 background-position: center;
 }
 
 #board {
   width: 440px;
   height: 440px;
-  border: 1px solid gold;
+  border: 3px solid gold;
   position: absolute;
   background-color: darkgreen;
 }
@@ -20,6 +20,7 @@ background-position: center;
  left: 100px;
  top: 100px;  
 }
+
 
 
 
