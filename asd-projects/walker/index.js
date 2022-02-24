@@ -18,15 +18,22 @@ function runProgram(){
     'UP':38,
     'DOWN':40,
     'RIGHT':39,
+    'UP2': 87,
+    'DOWN2': 83,
+    'LEFT2': 65,
+    'RIGHT2': 68,
   }
   var positionX = 0;
   var positionY = 0;
   var speedX = 0;
   var speedY = 0;
+ 
+
 
   var BOARD_WIDTH = $('#board').width() - $('#walker').width();
   var BOARD_HEIGHT = $('#board').height() - $('#walker').height();
 
+ 
   
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
@@ -47,7 +54,7 @@ function runProgram(){
   function newFrame(){
     repositionGameItem();
     redrawGameItem();
-    stopBallNow();
+
     
   }
   /* 
@@ -72,6 +79,17 @@ function runProgram(){
       speedY = 5;
       console.log('Down is pressed')
     }
+    else if (event.which === KEY.UP2){
+      speedy2 = -5;
+    } else if (event.which === KEY.DOWN2){
+      speedy2 = 5;
+    }
+    else if (event.which === KEY.RIGHT2){
+      speedx2 = 5;
+    }
+    else if (event.which === KEY.LEFT2){
+      speedx2 = -5;
+    }
   }
 
 
@@ -85,24 +103,30 @@ function runProgram(){
       speedY = 0;
     }else if (event.which === KEY.DOWN){
       speedY = 0;
+    } else if (event.which === KEY.LEFT2){
+      speedx2 = 0;
+    }else if (event.which === KEY.RIGHT2){
+      speedx2 = 0;
+    }else if (event.which === KEY.UP2){
+      speedy2 = 0;
+    }else if (event.which === KEY.DOWN2){
+      speedy2 = 0;
     }
   }
 // This seemed to counter the glitch  , restrics the user to the leave the box
   function stopBallNow(){
     if (positionX > BOARD_WIDTH){
-       positionX = BOARD_WIDTH -5;
-    }
-    else if(positionX < 0){
-      positionX = 5;
-    }
-    else if (positionY > BOARD_HEIGHT -5){
+       positionX = BOARD_WIDTH;
+    }else if(positionX < 0){
+      positionX = 0;
+    }if (positionY > BOARD_HEIGHT ){
       positionY = BOARD_HEIGHT;
-    }
-    else if (positionY < 0){
-      positionY = 5;
+    }else if (positionY < 0){
+      positionY = 0;
 
-    }  
+
  }
+}
 
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
@@ -112,11 +136,14 @@ function runProgram(){
 //Repositions the gameItem 
      positionX += speedX;
      positionY += speedY;
+    stopBallNow()
   }
   
   function redrawGameItem(){
     $('#walker').css('top', positionY);
     $('#walker').css('left', positionX);
+    $('#player2').css('top', posity2);
+    $('#player2').css('left', positx2);
     
   }
   function endGame(){
