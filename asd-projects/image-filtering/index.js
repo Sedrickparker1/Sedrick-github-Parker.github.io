@@ -4,11 +4,11 @@ $(document).ready(function(){
     const $display = $('#display');
 
     // TODO: Call your apply function(s) here
-    // applyFilter(reddify);
+    applyFilter(reddify);
     applyFilterNoBackground(reddify);
-    applyFilterNoBackground(decreaseBlue);
-    // // applyFilter(decreaseBlue);
-    // applyFilter(increaseGreenByBlue);
+    // applyFilterNoBackground(decreaseBlue);
+    applyFilter(decreaseBlue);
+    applyFilter(increaseGreenByBlue);
 
     
 
@@ -74,3 +74,7 @@ console.log(keepInBounds(127)); // should print 127
 
 
 // CHALLENGE code goes below here
+
+
+
+
