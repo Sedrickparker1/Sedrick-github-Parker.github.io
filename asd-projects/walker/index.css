@@ -1,35 +1,69 @@
 
 body {
-  background-color:goldenrod;
-background-position: center;
+/* background-color:darkslateblue; */
+background-image :url(https://th.bing.com/th/id/R.b857b417803d51eca0048c003fbbf0eb?rik=%2fK7zcKzHK%2fdQqA&riu=http%3a%2f%2fwallpapercave.com%2fwp%2fEPjdonr.jpg&ehk=isepnYxDEirdf208rFj3Hrs%2fJoi8sYKA15CQiFnJMuw%3d&risl=&pid=ImgRaw&r=0);
+background-position:center;
+}
+ul{
+  position: absolute;
+  top:50px;
+  right:700px;
+  color:whitesmoke;
 }
 
+h1{
+position: absolute;
+right: 600px;
+font-size: 10x;
+color:whitesmoke;
+font-family: serif;
+}
+h2{
+  position:absolute;
+  top:80px;
+  font-size: 20px;
+  color: lightsteelblue;
+  font-family: serif;
+}
 #board {
+  top:30px;
+  right: 25px;
+  left:800px;
   width: 440px;
   height: 440px;
-  border: 3px solid gold;
-  position: absolute;
-  background-color: darkgreen;
-}
-#walker {
-  background-color: gold;
-  width: 50px;
-  height: 50px;
-  border-radius:50px;
+  border: 3px hidden whitesmoke;
   position: relative;
+  /* background-image :url(https://th.bing.com/th/id/R.b857b417803d51eca0048c003fbbf0eb?rik=%2fK7zcKzHK%2fdQqA&riu=http%3a%2f%2fwallpapercave.com%2fwp%2fEPjdonr.jpg&ehk=isepnYxDEirdf208rFj3Hrs%2fJoi8sYKA15CQiFnJMuw%3d&risl=&pid=ImgRaw&r=0);
+  background-repeat: no-repeat; */
+}
+
+#walker {
+background-color: #fff;
+border-radius: 30%;
+box-shadow:
+  0 0 60px 30px #fff,  /* inner white */    0 0 100px 60px #f0f, /* middle magenta */
+ 0 0 140px 90px #0ff; /* outer cyan */
+ height:30px;
+ width:30px;
  left: 100px;
  top: 100px;  
+ position: relative;
 }
 #player2 {
-  background-color : black;
-  width: 50px;
-  height: 50px;
+  background-color :#fff;
+  box-shadow:
+  inset 0 0 50px #fff,      /* inner white */
+  inset 20px 0 80px #f0f,   /* inner left magenta short */
+  inset -20px 0 80px #0ff,  /* inner right cyan short */
+  inset 20px 0 300px #f0f,  /* inner left magenta broad */
+  inset -20px 0 300px #0ff, /* inner right cyan broad */
+  0 0 50px #fff,            /* outer white */
+  -10px 0 80px #f0f,        /* outer left magenta */
+  10px 0 80px #0ff;         /* outer right cyan */
+  width: 30px;
+  height: 30px;
   border-radius: 50px;
-  position: relative;
+  position:absolute;
   left: 100px;
   top: 100px;
 }
-
-
-
-
