@@ -9,9 +9,9 @@ The CSS ids you will work with are:
 /////////////////////// YOUR WORK GOES BELOW HERE /////////////////////
 ///////////////////////////////////////////////////////////////////////
 // TODO 2: Implement bubbleSort
-async function bubbleSort(array) {
+async function bubbleSort(array){
         var end = array.length -1;
-    for (var i = 0; i <= end; i++) {
+    for (var i = 0; i <= end; i++){
         for (var j = end ; j >= i + 1; j--) {
             if (array[j].value < array[j - 1].value) {
                 swap(array, j, j - 1);
