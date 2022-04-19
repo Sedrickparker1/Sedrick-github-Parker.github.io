@@ -6,9 +6,9 @@ function runProgram(){
   //////////////////////////// SETUP /////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
   // Constant Variables
+
   var FRAME_RATE = 60;
   var FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
-
   // Game Item Objects
   // Controls for movement of the game items
   var KEY = {
@@ -34,8 +34,6 @@ function runProgram(){
   var locationy = 0;
   var speedx2 = 0;
   var speedy2 = 0;
-
-
 
 
   // one-time setup
@@ -91,7 +89,7 @@ function runProgram(){
     }
   }
   // Ensures the walker stops when the user isnt attempting to move the game items
-  function handleKeyUp(event) {
+  function handleKeyUp(event){
     if (event.which === KEY.LEFT) {
       speedX = 0;
     } else if (event.which === KEY.RIGHT) {
@@ -111,7 +109,7 @@ function runProgram(){
     }
   }
   // This seemed to counter the glitch  , restrics the user to the leave the box
-  function stopBallNow() {
+  function stopBallNow(){
     if (positionX > BOARD_WIDTH) {
       positionX = BOARD_WIDTH;
     } else if (positionX < 0) {
@@ -130,7 +128,6 @@ function runProgram(){
     } else if (locationy < 0) {
       locationy = 0;
     }
-
   }
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
@@ -150,7 +147,6 @@ function runProgram(){
     $('#walker').css('left', positionX);
     $('#player2').css('top', locationy);
     $('#player2').css('left', locationx);
-
   }
   function endGame() {
     // stop the interval timer

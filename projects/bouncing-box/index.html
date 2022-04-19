@@ -6,11 +6,11 @@
 	<script src="jquery.min.js"></script>
 	<style>
 		.box {
-			
 			border-radius: 8px;
-			width: 70px;
-			height: 70px;
+			width: 40px;
+			height: 40px;
 			background-color: darkblue;
+			border-radius:  50%;
 			font-size: 300%;
 			text-align: center;
 			display: block;
@@ -112,7 +112,7 @@
 			function handleBoxClick() {
 				positionX = 0;
 				speed += 3;
-				points = points + 1;
+				 points += 1;
 				changeBoxText(points);
 
 				if (speed -= 3){

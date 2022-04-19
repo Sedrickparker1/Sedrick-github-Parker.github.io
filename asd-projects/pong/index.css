@@ -1,21 +1,65 @@
 
 body {
-  background-color: darkgreen;
+ background-image: url(https://www.itl.cat/pngfile/big/147-1470856_images-from-table-tennis-the-animation.jpg); 
+ background-color: mediumaquamarine;
+ /* background-repeat: no-repeat; */
+
 }
 
 #board {
-  width: 440px;
-  height: 440px;
-  border: 1px solid white;
-  background-color: black;
+  width: 500px;
+  height: 500px;
+  border: 14px inset lightblue ;
+  background-color: oldlace;
   position: relative;
 }
 
-#gameItem {
-  background-color: teal;
-  width: 50px;
-  height: 50px;
+#ball {
+  background-color: #fff;
+  /* box-shadow: */
+    /* 0 0 40px 15px rgb(233, 19, 19),  inner white */
+    /* 0 0 90px 30px rgb(202, 32, 32), middle magenta */
+    /* 0 0 120px 40px rgb(184, 30, 25); outer cyan */
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: fixed;
+  left:215px;
+  top: 240px;
+
+}
+#scoreboard{
+  position: fixed;
+  height: 30px;
+  width: 30px;
+  color:orange;
+  right:600px;
+}
+#scoreboard2{
   position: absolute;
-/*   left: 100px; */  /* Uncomment if you want to set a "starting" position */
-/*   top: 100px;  */  /* Uncomment if you want to set a "starting" position */
+  height: 30px;
+  width: 30px;
+  color:lightblue;
+  top: 200px;
+  left: 750px;
+}
+#player1{
+  height: 90px;
+  width : 20px;
+  background-color: orange;
+  border: 3px dotted red;
+  border-radius: 60%;
+  position: fixed;
+  top: 220px;
+  left: 30px;
+}
+#player2{
+  height: 90px;
+  width : 20px;
+  background-color:lightblue;
+  border: 3px dotted whitesmoke;
+  border-radius: 60%;
+  position: fixed ;
+  top: 205px;
+  left: 480px;
 }

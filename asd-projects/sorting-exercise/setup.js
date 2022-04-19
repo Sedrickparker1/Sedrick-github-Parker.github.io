@@ -7,16 +7,17 @@
 
 // set the delay between each sort step
 const SLEEP_AMOUNT = 5;
-
 // set the max number of squares
+
+
+
 const MAX_SQUARES = 100;
 
 // set constants for pseudo-random number generation
+
 const SEED = 2;
 const FACTOR = 1774339;
 const INCREASE = 7181930;
-
-
 /////////////////////////////////////////////////
 // ALL CONSTANTS BELOW HERE SHOULD NOT BE ALTERED
 

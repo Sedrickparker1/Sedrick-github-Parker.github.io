@@ -12,8 +12,8 @@ The CSS ids you will work with are:
 async function bubbleSort(array){
         var end = array.length -1;
     for (var i = 0; i <= end; i++){
-        for (var j = end ; j >= i + 1; j--) {
-            if (array[j].value < array[j - 1].value) {
+        for (var j = end ; j >= i + 1; j--){
+            if (array[j].value < array[j - 1].value){
                 swap(array, j, j - 1);
                 updateCounter(bubbleCounter);
                 await sleep();
@@ -43,7 +43,7 @@ async function partition(array, left, right) {
             left++;
         while (array[right].value > pivot)
             right--;
-        if (left < right) {
+        if (left < right){
             swap(array, left, right);
             updateCounter(quickCounter);
             await sleep();
