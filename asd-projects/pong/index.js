@@ -37,9 +37,9 @@ function runProgram() {
   let pong2 = MakeGameItem('#player2');
   let ball = MakeBall('#ball');
  
-
   const BOARD_HEIGHT = $('#board').height() - $('#player1').height();
   const boardwidth = $('#board').width() - $('#ball').width();
+  const ballBoardHeight = $('#board').height() - $('#ball').height();
   const  KEY = {
     'P1UP': 38,
     'P1DOWN': 40,
@@ -60,11 +60,36 @@ function runProgram() {
   */
 
   function newFrame() {
-    playerMovement(pong);
-    playerMovement(pong2);
+    Movement(pong);
+    Movement(pong2);
     moveBall();
-    check(ball,pong);
-   
+    collide(pong,pong2);
+     
+  }
+  function collide(player1, player2){
+    // item sides
+    player1.top = player1.y;
+    player1.bottom = player1.y + player1.height;
+    player1.left = player1.x;
+    player1.right = player1.x + player1.width;
+
+    player2.top = player2.y;
+    player2.bottom = player2.y + player2.height;
+    player2.left = player2.x 
+    player2.right = player2.x + player2.width;
+
+// the ball ..
+    ball.left = ball.x ;
+    ball.right = ball.x + ball.width;
+    ball.bottom = ball.y + ball.height;
+    ball.top = ball.y;
+// long ass conditionss
+   if(player1.right > ball.left && player1.left < ball.right && player1.top < ball.bottom && player1.bottom > ball.top){
+    ball.speedX += 3;
+   }
+   else if(player2.left < ball.right && player2.right > ball.right && player2.top < ball.bottom && player2.bottom > ball.top){
+    ball.speedX -= 2;
+   }
   }
   /* 
   Called in response to events.
@@ -72,34 +97,35 @@ function runProgram() {
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
-  function check(ball, paddles){
-      if (ball.x + ball.width + ball.speedX > paddles.x  && ball.x + ball.speedX < paddles.x + paddles.width && ball.y + paddles.height ){
-        ball.speedX = -2;
-      }
-      else if (ball.x < 0 || ball.x + ball.width > width){
-        ball.speedX = -2;
-      }
-    }
+  // todos: we need the 
     // when the ball hits the paddle .. speed should be reversed 
-  function playerMovement(obj) {
+    //  calculate the right side of the 1st paddle.
+    
+  function Movement(obj) {
     obj.y += obj.speedY;
     $(obj.id).css('top', obj.y);
     dontLeaveBoard(obj);
   }
   function moveBall(){
     ball.x += ball.speedX;
-    // ball.y += ball.speedY;
+    ball.y += ball.speedY;
     $(ball.id).css("left", ball.x);
-    // $(ball.id).css('top', ball.y);
-    if (ball.x > boardwidth){
+    $(ball.id).css('top', ball.y);
+    if(ball.x > boardwidth){
       ball.x = 250;
-      ball.speedX = -2;
-    //   scoreTaker('#scoreboard');
+      ball.speedX = -4;
+      score('#scoreboard');
      }
-    else if (ball.x < 0){
-      ball.x = 300;
-      ball.speedX += 4;
-      // scoreTaker('#scoreboard2');
+    else if(ball.x < 0){
+      ball.x = 280;
+      ball.speedX = 4;
+      score('#scoreboard2');
+    }
+    else if(ball.y > ballBoardHeight){
+      ball.speedY = -3;
+    }
+    else if(ball.y < 0){
+      ball.speedY = 4;
     }
   }
   function handleKeyDown(event) {
@@ -139,12 +165,14 @@ function runProgram() {
     }
   }
   // scoreboard for the game ...
-  function scoreTaker(id){
+  function score(id){
     $(id).text( 'Players score : ' + (parseFloat($(id).text().replace(/^\D+/g, '')) + 1));
-  }
+    }
+  
   function endGame() {
     // stop the interval timer
     clearInterval(interval);
+    alert('Everybody is a winner ');
 
     // turn off event handlers
     $(document).off();
