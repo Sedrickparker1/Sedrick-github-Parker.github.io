@@ -1,7 +1,6 @@
 /* global $, sessionStorage */
 
 $(document).ready(runProgram); // wait for the HTML / CSS elements of the page to fully load, then execute runProgram()
-
 function runProgram() {
   ////////////////////////////////////////////////////////////////////////////////
   //////////////////////////// SETUP /////////////////////////////////////////////
@@ -51,6 +50,7 @@ function runProgram() {
   $(document).on('keydown', handleKeyDown);
   $(document).on('keyup', handleKeyUp);
 
+
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -73,6 +73,8 @@ function runProgram() {
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
     //  calculate the right side of the 1st paddle.
+    let winner = 0;
+    let winner2 = 0;
   function collide(player1, player2){
       // item sides
       player1.top = player1.y;
@@ -103,30 +105,28 @@ function runProgram() {
     $(obj.id).css('top', obj.y);
     dontLeaveBoard(obj);
   }
-  var winner = 0;
-  var winner2 = 0;
   function moveBall(){
     ball.x += ball.speedX;
     ball.y += ball.speedY;
     $(ball.id).css("left", ball.x);
     $(ball.id).css('top', ball.y);
     if(ball.x > boardwidth){
-      ball.x = 250;
-      ball.speedX = Math.floor((Math.random() * -5) + -5); ;
+      ball.x = Math.floor((Math.random()* 245) + 250);
+      ball.speedX = Math.floor((Math.random() * -5) + -5);
       score('#scoreboard');
       winner++;
      }
     else if(ball.x < 0){
-      ball.x = 280;
+      ball.x = Math.floor((Math.random()* 260) + 265);
       ball.speedX = Math.floor((Math.random() * 5) + 5); 
       score('#scoreboard2');
       winner2++;
     }
     else if(ball.y > ballBoardHeight){
-      ball.speedY =Math.floor((Math.random() * -5) + -5); ;
+      ball.speedY = Math.floor((Math.random() * -6) + -6); ;
     }
     else if(ball.y < 0){
-      ball.speedY = Math.floor((Math.random() * 5) + 5);;
+      ball.speedY = Math.floor((Math.random() * 6) + 6);
     }
   }
   function handleKeyDown(event){
@@ -169,18 +169,21 @@ function runProgram() {
   function score(id){
     $(id).text( 'Players score : ' + (parseFloat($(id).text().replace(/^\D+/g, '')) + 1));
    }
-  
    function CheckForWin(){
     if (winner === 5){
-      endGame();
-    }else if(winner2 === 5){
-      endGame();
+        winner = 'Player1';
+      endGame(winner);
+    }else if(winner2 === 5){ 
+       winner2 = 'Player2';
+      endGame(winner2);
     }
   }
-  
-  function endGame() {
+  // function getScoreFeed(id, newtext ){
+  //   document.getElementById(id).innerHTML = newtext;
+  // }
+  function endGame(champ){
     // stop the interval timer
-    alert('looks like we have a winner.');
+    alert(champ + ' has won this game');
     clearInterval(interval);
     $(document).off();
   }
