@@ -100,23 +100,25 @@ function runProgram() {
     $(ball.id).css("left", ball.x);
     $(ball.id).css('top', ball.y);
     if(ball.x > boardwidth){
-      ball.x = Math.floor((Math.random(250)* 260));
-      ball.speedX = Math.floor((Math.random(-3)* -5));
+      ball.x = Math.floor((Math.random()* 260 - 250) + 260);
+      ball.speedX = Math.floor((Math.random() -4 - -3) + -4);
       score('#scoreboard');
       winner++;
      }
 
     else if(ball.x < 0){
-      ball.x = Math.floor((Math.random(250)* 255));
-      ball.speedX = Math.floor((Math.random(3) * 4)); 
+      ball.x = Math.floor((Math.random()*255));
+      ball.speedX = Math.floor((Math.random() * 4) + 1); 
       score('#scoreboard2');
       winner2++;
     }
-    else if(ball.y > ballBoardHeight){
-      ball.speedY = Math.floor((Math.random(-3) * -4)); ;
+     if(ball.y > ballBoardHeight){
+      ball.speedY = Math.floor((Math.random() * -4) + 1); 
+      ball.speedX++;
     }
     else if(ball.y < 0){
-      ball.speedY = Math.floor((Math.random(3) * 4));
+      ball.speedY = Math.floor((Math.random() * 4));
+      ball.speedX++;
     }
   }
   function handleKeyDown(event){
@@ -161,10 +163,10 @@ function runProgram() {
    }
    function CheckForWin(){
     if (winner === 5){
-        winner = 'Player1';
+        winner = 'Player2';
       endGame(winner);
     }else if(winner2 === 5){ 
-       winner2 = 'Player2';
+       winner2 = 'Player1';
       endGame(winner2);
     }
   }
