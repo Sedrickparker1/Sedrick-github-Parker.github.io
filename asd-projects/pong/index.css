@@ -10,7 +10,6 @@ body {
   width: 500px;
   height: 500px;
   border: 4px inset black;
-  background-image: url(https://th.bing.com/th/id/R.91257ce9ddda777fbe6b36b66069a336?rik=5yf1vXKVCys1PQ&pid=ImgRaw&r=0);
   background-color: darkolivegreen;
   position: relative;
 }
@@ -73,4 +72,10 @@ color: darkolivegreen;
 position : absolute;
 left :900px;
 font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.dottedlines{
+  width: 245px;
+  height: 496px;
+  border-right: 10px dashed black;
+  margin-top: 2px;
 }
