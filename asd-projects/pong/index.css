@@ -36,14 +36,14 @@ body {
   position: fixed;
   height: 30px;
   width: 30px;
-  color: blue;
+  color:red;
   right:600px;
 }
 #scoreboard2{
   position: absolute;
   height: 30px;
   width: 30px;
-  color:red;
+  color : blue;
   top: 200px;
   left: 750px;
 }
@@ -73,7 +73,7 @@ position : absolute;
 left :900px;
 font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-.dottedlines{
+.dottedLines{
   width: 245px;
   height: 496px;
   border-right: 10px dashed black;
