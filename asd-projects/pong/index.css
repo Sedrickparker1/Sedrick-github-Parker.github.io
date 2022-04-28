@@ -27,24 +27,9 @@ body {
   height: 20px;
   width: 20px;
   border-radius: 50%;
-  position: fixed;
+  position: absolute;
   left:215px;
   top: 240px;
-}
-#scoreboard{
-  position: fixed;
-  height: 30px;
-  width: 30px;
-  color:blue;
-  right:600px;
-}
-#scoreboard2{
-  position: fixed;
-  height: 30px;
-  width: 30px;
-  color : red;
-  top: 200px;
-  left: 750px;
 }
 #player1{
   height: 90px;
@@ -75,4 +60,11 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   height: 496px;
   border-right: 10px dashed black;
   margin-top: 2px;
+}
+#score{
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+  color: white;
+  font-size: 20px;
 }
