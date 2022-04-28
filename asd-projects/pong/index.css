@@ -1,8 +1,7 @@
 
 body {
- /* background-image: url(https://th.bing.com/th/id/R.b11207c819afe703ecd4d29868e8e7db?rik=N9svpbf%2bG3iERA&riu=http%3a%2f%2fwww.publicdomainpictures.net%2fpictures%2f80000%2fvelka%2fgreen-ribbon-background-1393276642PwD.jpg&ehk=tk6Jo8MZooJt8RTT6TPRUri9khe4iAzOaKDtKWjeq4c%3d&risl=&pid=ImgRaw&r=0);  */
  background-color: gray;
- /* background-repeat: no-repeat; */
+ 
 
 }
 
@@ -10,7 +9,7 @@ body {
   width: 500px;
   height: 500px;
   border: 4px inset black;
-  background-color: darkolivegreen;
+  background-color: lightblue;
   position: relative;
 }
 
@@ -36,14 +35,14 @@ body {
   position: fixed;
   height: 30px;
   width: 30px;
-  color:red;
+  color:blue;
   right:600px;
 }
 #scoreboard2{
-  position: absolute;
+  position: fixed;
   height: 30px;
   width: 30px;
-  color : blue;
+  color : red;
   top: 200px;
   left: 750px;
 }
@@ -51,24 +50,22 @@ body {
   height: 90px;
   width : 20px;
   background-color: blue;
-  border: 3px dotted grey;
-  border-radius: 60%;
-  position: fixed;
+  border: 2px dotted grey;
+  /* border-radius: 60%; */
+  position: absolute;
   top: 220px;
-  left: 30px;
 }
 #player2{
   height: 90px;
   width : 20px;
   background-color: red;
   border: 3px inset black;
-  border-radius: 60%;
-  position: fixed ;
+  position: absolute ;
   top: 205px;
-  left: 480px;
+  left: 475px;
 }
 #greeting{
-color: darkolivegreen;
+color: lightblue;
 position : absolute;
 left :900px;
 font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
