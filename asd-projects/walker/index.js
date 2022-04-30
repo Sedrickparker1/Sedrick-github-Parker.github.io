@@ -66,15 +66,12 @@ function runProgram(){
     }
     else if (event.which === KEY.RIGHT) {
       speedX = 5;
-      console.log('Right is pressed')
     }
     else if (event.which === KEY.UP) {
       speedY = -5;
-      console.log('Up is pressed')
     }
     else if (event.which === KEY.DOWN) {
       speedY = 5;
-      console.log('Down is pressed')
     }
     else if (event.which === KEY.UP2) {
       speedy2 = -5;
