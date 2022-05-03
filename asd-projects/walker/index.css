@@ -27,11 +27,10 @@ h2{
 }
 #board {
   top:30px;
-  right: 25px;
-  left:800px;
-  width: 440px;
-  height: 440px;
-  border: 3px dashed whitesmoke;
+  left:250px;
+  width: 900px;
+  height: 900px;
+  border: 1px hidden whitesmoke;
   position: relative;
   /* background-image :url(https://th.bing.com/th/id/R.b857b417803d51eca0048c003fbbf0eb?rik=%2fK7zcKzHK%2fdQqA&riu=http%3a%2f%2fwallpapercave.com%2fwp%2fEPjdonr.jpg&ehk=isepnYxDEirdf208rFj3Hrs%2fJoi8sYKA15CQiFnJMuw%3d&risl=&pid=ImgRaw&r=0);
   background-repeat: no-repeat; */
@@ -47,7 +46,7 @@ box-shadow:
  width:30px;
  left: 100px;
  top: 100px;  
- position: relative;
+ position: absolute;
 }
 #player2 {
   background-color :#fff;

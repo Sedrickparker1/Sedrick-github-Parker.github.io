@@ -6,12 +6,11 @@ function runProgram(){
   //////////////////////////// SETUP /////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
   // Constant Variables
-
-  var FRAME_RATE = 60;
-  var FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
+  const FRAME_RATE = 60;
+  const FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
   // Game Item Objects
   // Controls for movement of the game items
-  var KEY = {
+let KEY = {
     'ENTER': 13,
     'LEFT': 37,
     'UP': 38,
@@ -22,22 +21,23 @@ function runProgram(){
     'LEFT2': 65,
     'RIGHT2': 68,
   }
-  var positionX = 0;
-  var positionY = 0;
-  var speedX = 0;
-  var speedY = 0;
-  var BOARD_WIDTH = $('#board').width() - $('#walker').width();
-  var BOARD_HEIGHT = $('#board').height() - $('#walker').height();
-
-
-  var locationx = 0;
-  var locationy = 0;
-  var speedx2 = 0;
-  var speedy2 = 0;
-
-
+function MakePlayer(id){
+  var player = {};
+  player.id = id;
+  player.x = Number($(id).css('left').replace(/[^-\d\.]/g, ""));
+  player.y = Number($(id).css('top').replace(/[^-\d\.]/g, ""));
+  player.height = $(id).height();
+  player.width = $(id).width();
+  player.speedX = 0;
+  player.speedY = 0;
+  return player;
+}
+  let player1 = MakePlayer('#walker');
+  let player2 = MakePlayer('#player2');
+  const BOARD_WIDTH = $('#board').width() - $('#walker').width();
+  const BOARD_HEIGHT = $('#board').height() - $('#walker').height();
   // one-time setup
-  var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
+  const interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('keydown', handleKeyDown);
   $(document).on('keyup', handleKeyUp);
 
@@ -52,8 +52,7 @@ function runProgram(){
   by calling this function and executing the code inside.
   */
   function newFrame() {
-    repositionGameItem();
-    redrawGameItem();
+    repositionGameItem(player1);
   }
   /* 
   Called in response to events.
@@ -61,89 +60,74 @@ function runProgram(){
   // controls the movement of the walker game items , Player1 and Player2
   function handleKeyDown(event) {
     if (event.which === KEY.LEFT) {
-      speedX = -5;
-      console.log('left key detected')
+      player1.speedX = -5;
     }
     else if (event.which === KEY.RIGHT) {
-      speedX = 5;
+      player1.speedX = 5;
     }
     else if (event.which === KEY.UP) {
-      speedY = -5;
+      player1.speedY = -5;
     }
     else if (event.which === KEY.DOWN) {
-      speedY = 5;
+      player1.speedY = 5;
     }
     else if (event.which === KEY.UP2) {
-      speedy2 = -5;
+      player2.speedY = -5;
     } else if (event.which === KEY.DOWN2) {
-      speedy2 = 5;
+      player2.speedY = 5;
     }
     else if (event.which === KEY.RIGHT2) {
-      speedx2 = 5;
+      player2.speedX = 5;
     }
     else if (event.which === KEY.LEFT2) {
-      speedx2 = -5;
+      player2.speedX = -5;
     }
   }
   // Ensures the walker stops when the user isnt attempting to move the game items
   function handleKeyUp(event){
     if (event.which === KEY.LEFT) {
-      speedX = 0;
+      player1.speedX = 0;
     } else if (event.which === KEY.RIGHT) {
-      speedX = 0;
+      player1.speedX = 0;
     } else if (event.which === KEY.UP) {
-      speedY = 0;
+      player1.speedY = 0;
     } else if (event.which === KEY.DOWN) {
-      speedY = 0;
+      player1.speedY = 0;
     } else if (event.which === KEY.LEFT2) {
-      speedx2 = 0;
+      player2.speedX = 0;
     } else if (event.which === KEY.RIGHT2) {
-      speedx2 = 0;
+      player2.speedX = 0;
     } else if (event.which === KEY.UP2) {
-      speedy2 = 0;
+      player2.speedY = 0;
     } else if (event.which === KEY.DOWN2) {
-      speedy2 = 0;
+      player2.speedY = 0;
     }
   }
-  // This seemed to counter the glitch  , restrics the user to the leave the box
-  function stopBallNow(){
-    if (positionX > BOARD_WIDTH) {
-      positionX = BOARD_WIDTH;
-    } else if (positionX < 0) {
-      positionX = 0;
-    } if (positionY > BOARD_HEIGHT) {
-      positionY = BOARD_HEIGHT;
-    } else if (positionY < 0) {
-      positionY = 0;
+  // This seemed to counter the glitch  , restrics the user to the leave the bo
+
+  function keepOnBoard(obj){
+    if(obj.x > BOARD_WIDTH ){
+      obj.x = BOARD_WIDTH;
     }
-    if (locationx > BOARD_WIDTH) {
-      locationx = BOARD_WIDTH;
-    } else if (locationx < 0) {
-      locationx = 0;
-    } if (locationy > BOARD_HEIGHT) {
-      locationy = BOARD_HEIGHT;
-    } else if (locationy < 0) {
-      locationy = 0;
+    else if (obj.x < BOARD_WIDTH - BOARD_WIDTH){
+      obj.x = BOARD_WIDTH - BOARD_WIDTH;
+    }
+    if (obj.y > BOARD_HEIGHT){
+      obj.y = BOARD_HEIGHT;
+    }
+    else if(obj.y < BOARD_HEIGHT - BOARD_HEIGHT){
+      obj.y = BOARD_HEIGHT - BOARD_HEIGHT;
+
     }
   }
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
 
-  function repositionGameItem() {
+  function repositionGameItem(obj){
     //Repositions the gameItem 
-    locationx += speedx2;
-    locationy += speedy2;
-    positionX += speedX;
-    positionY += speedY;
-    stopBallNow();
-  }
-
-  function redrawGameItem() {
-    $('#walker').css('top', positionY);
-    $('#walker').css('left', positionX);
-    $('#player2').css('top', locationy);
-    $('#player2').css('left', locationx);
+   obj.x += obj.speedX;
+   obj.y += obj.speedY;
   }
   function endGame() {
     // stop the interval timer
