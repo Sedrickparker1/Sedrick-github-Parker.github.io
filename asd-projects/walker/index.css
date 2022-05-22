@@ -1,68 +1,70 @@
 
 body {
-/* background-color:darkslateblue; */
-background-image :url(https://th.bing.com/th/id/R.b857b417803d51eca0048c003fbbf0eb?rik=%2fK7zcKzHK%2fdQqA&riu=http%3a%2f%2fwallpapercave.com%2fwp%2fEPjdonr.jpg&ehk=isepnYxDEirdf208rFj3Hrs%2fJoi8sYKA15CQiFnJMuw%3d&risl=&pid=ImgRaw&r=0);
-background-position:center;
-}
-ul{
-  position: absolute;
-  top:50px;
-  right:700px;
-  color:whitesmoke;
+background-color: black;
 }
 
-h1{
-position: absolute;
-right: 600px;
-font-size: 10x;
-color:whitesmoke;
-font-family: serif;
-}
-h2{
-  position:absolute;
-  top:80px;
-  font-size: 20px;
-  color: lightsteelblue;
-  font-family: serif;
-}
 #board {
   top:30px;
   left:250px;
-  width: 900px;
-  height: 900px;
-  border: 1px hidden whitesmoke;
+  width: 500px;
+  height: 500px;
+  border: 11px dashed whitesmoke;
   position: relative;
-  /* background-image :url(https://th.bing.com/th/id/R.b857b417803d51eca0048c003fbbf0eb?rik=%2fK7zcKzHK%2fdQqA&riu=http%3a%2f%2fwallpapercave.com%2fwp%2fEPjdonr.jpg&ehk=isepnYxDEirdf208rFj3Hrs%2fJoi8sYKA15CQiFnJMuw%3d&risl=&pid=ImgRaw&r=0);
-  background-repeat: no-repeat; */
+ background-color: darkblue;
 }
 
 #walker {
-background-color: #fff;
+background-color: black;
 border-radius: 30%;
-box-shadow:
-  0 0 60px 30px #fff,  /* inner white */    0 0 100px 60px #f0f, /* middle magenta */
- 0 0 140px 90px #0ff; /* outer cyan */
+/* box-shadow:
+  0 0 60px 30px #fff,  /* inner white */  
+   /* 0 0 100px 60px #f0f, middle magenta */
+ /* 0 0 140px 90px #0ff; outer cyan */ 
  height:30px;
  width:30px;
- left: 100px;
- top: 100px;  
+ left: 450px;
+ top: 200px;  
  position: absolute;
+ font-size: 150%;
+ color: yellow;
+ text-align: center;
 }
 #player2 {
   background-color :#fff;
-  box-shadow:
+  /* box-shadow:
   inset 0 0 50px #fff,      /* inner white */
-  inset 20px 0 80px #f0f,   /* inner left magenta short */
-  inset -20px 0 80px #0ff,  /* inner right cyan short */
-  inset 20px 0 300px #f0f,  /* inner left magenta broad */
-  inset -20px 0 300px #0ff, /* inner right cyan broad */
-  0 0 50px #fff,            /* outer white */
-  -10px 0 80px #f0f,        /* outer left magenta */
-  10px 0 80px #0ff;         /* outer right cyan */
+  /* inset 20px 0 80px #f0f,   /* inner left magenta short */
+  /* inset -20px 0 80px #0ff,  inner right cyan short
+  inset 20px 0 300px #f0f,  inner left magenta broad
+  inset -20px 0 300px #0ff, inner right cyan broad
+  0 0 50px #fff,            outer white
+  -10px 0 80px #f0f,        outer left magenta */
+  /* 10px 0 80px #0ff;         outer right cyan  */
   width: 30px;
   height: 30px;
-  border-radius: 50px;
+  border-radius: 20%;
   position:absolute;
-  left: 100px;
-  top: 100px;
+  left: 30px;
+  top: 200px;
+  font-size: 150%;
+  color: yellow;
+  text-align: center;
 }
+
+#scoreBoard{
+  display: flex;
+  justify-content: space-evenly;
+  color: white;
+  width: 1000px;
+  font-size: 20px;
+  
+}
+#introduction{
+  position: sticky;
+  top: 200px;
+  color: whitesmoke;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 15px;
+  
+}
+

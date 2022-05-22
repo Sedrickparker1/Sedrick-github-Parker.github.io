@@ -74,13 +74,12 @@ function runProgram() {
     player2.bottom = player2.y + player2.height;
     player2.left = player2.x
     player2.right = player2.x + player2.width;
-
     // the ball ..
     ball.left = ball.x;
     ball.right = ball.x + ball.width;
     ball.bottom = ball.y + ball.height;
     ball.top = ball.y;
-    // long ass conditionss
+    //  conditionss
     if (player1.right > ball.left && player1.left < ball.right && player1.top < ball.bottom && player1.bottom > ball.top) {
       ball.speedX = 4;
     }
@@ -147,7 +146,7 @@ function runProgram() {
       getScoreFeed('Player2');
       winner++;
     }
-    else if (item.x < 0) {
+     if (item.x < 0) {
       item.x = 250;
       item.y = 250;
       item.speed = 0;
