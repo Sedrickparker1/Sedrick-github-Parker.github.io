@@ -1,15 +1,15 @@
 
 body {
- background-color: gray;
- 
-
+ background-color: lightgray;
 }
 #board {
   width: 500px;
   height: 500px;
   border: 4px inset black;
-  background-color: lightblue;
+  background-color: whitesmoke;
   position: relative;
+  left: 100px;
+  bottom: 20px;
 }
 #ball {
   background-color: #fff;
@@ -33,7 +33,7 @@ body {
   height: 90px;
   width : 20px;
   background-color: blue;
-  border: 2px dotted grey;
+  border: 3px inset black;
   /* border-radius: 60%; */
   position: absolute;
   top: 220px;
@@ -48,7 +48,7 @@ body {
   left: 475px;
 }
 #greeting{
-color: lightblue;
+color: whitesmoke;
 position : absolute;
 left :900px;
 font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -62,7 +62,7 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 #score{
   display: flex;
   justify-content: space-between;
-  width: 500px;
+  width: 700px;
   color: white;
   font-size: 20px;
 }
@@ -71,4 +71,5 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   width: 500px;
   top: 100px;
   font-size: 10px;
+  color: white;
 }

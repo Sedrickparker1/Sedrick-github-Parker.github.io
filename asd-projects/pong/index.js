@@ -8,7 +8,6 @@ function runProgram() {
   // Constant Variables
   const FRAME_RATE = 60;
   const FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
-
   // Game Item Objects
   function MakeGameItem(elementId) {
     let item = {};
@@ -20,12 +19,14 @@ function runProgram() {
     item.speedX = 0;
     item.speedY = 0;
     return item;
+    // factory function..
   }
   let pong = MakeGameItem('#player1');
   let pong2 = MakeGameItem('#player2');
   let ball = MakeGameItem('#ball');
   ball.speedX = 4;
   ball.speedY = 4;
+  let winner , winner2 = 0;
   const BOARD_HEIGHT = $('#board').height() - $('#player1').height();
   const boardWidth = $('#board').width() - $('#ball').width();
   const ballBoardHeight = $('#board').height() - 9;
@@ -39,7 +40,6 @@ function runProgram() {
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('keydown', handleKeyDown);
   $(document).on('keyup', handleKeyUp);
-
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -50,57 +50,51 @@ function runProgram() {
   function newFrame() {
     movement(pong);
     movement(pong2);
-    moveBall();
-    collide(pong, pong2);
+    makeItMove(ball);
+    collide(pong);
+    collide(pong2);
     CheckForWin();
-  }
-  /* 
-  Called in response to events.
-  */
+  } 
+  // 
+  // Called in response to events.
+  // */
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
   //  calculate the right side of the 1st paddle.
-  let winner = 0;
-  let winner2 = 0;
-  function collide(player1, player2){
-    // item sides
-    player1.top = player1.y;
-    player1.bottom = player1.y + player1.height;
-    player1.left = player1.x;
-    player1.right = player1.x + player1.width;
+ 
+  function collide(player) {
+    player.top = player.y;
+    player.bottom = player.y + player.height;
+    player.left = player.x;
+    player.right = player.x + player.width;
 
-    player2.top = player2.y;
-    player2.bottom = player2.y + player2.height;
-    player2.left = player2.x
-    player2.right = player2.x + player2.width;
-    // the ball ..
     ball.left = ball.x;
     ball.right = ball.x + ball.width;
     ball.bottom = ball.y + ball.height;
     ball.top = ball.y;
-    //  conditionss
-    if (player1.right > ball.left && player1.left < ball.right && player1.top < ball.bottom && player1.bottom > ball.top) {
+
+    if (player.right > ball.left && player.left < ball.right && player.top < ball.bottom && player.bottom > ball.top) {
       ball.speedX = 4;
     }
-    else if (player2.left < ball.right && player2.right > ball.right && player2.top < ball.bottom && player2.bottom > ball.top) {
+    if (player.left < ball.right && player.right > ball.right && player.top < ball.bottom && player.bottom > ball.top) {
       ball.speedX = -4;
     }
   }
-  function movement(obj){
+  function movement(obj) {
     $(obj.id).css('top', obj.y);
     obj.y += obj.speedY;
     dontLeaveBoard(obj);
   }
-  function moveBall(){
-    ball.x += ball.speedX;
-    ball.y += ball.speedY;
-    $(ball.id).css("left", ball.x);
-    $(ball.id).css('top', ball.y);
-    getScore(ball);
-    keepBallInBoard(ball);
+  function makeItMove(item) {
+    item.x += item.speedX;
+    item.y += item.speedY;
+    $(item.id).css("left", item.x);
+    $(item.id).css('top', item.y);
+    getScore(item);
+    keepBallInBoard(item);
   }
-  function handleKeyDown(event){
+  function handleKeyDown(event) {
     if (event.which === KEY.P1UP) {
       pong2.speedY = -7;
     }
@@ -114,7 +108,7 @@ function runProgram() {
       pong.speedY = 7;
     }
   }
-  function handleKeyUp(event){
+  function handleKeyUp(event) {
     if (event.which === KEY.P1UP) {
       pong2.speedY = 0;
     }
@@ -128,35 +122,35 @@ function runProgram() {
       pong.speedY = 0;
     }
   }
-  function dontLeaveBoard(obj){
+  function dontLeaveBoard(obj) {
     if (obj.y > BOARD_HEIGHT) {
       obj.y = BOARD_HEIGHT;
     }
-    else if (obj.y < BOARD_HEIGHT - BOARD_HEIGHT) {
+    if (obj.y < BOARD_HEIGHT - BOARD_HEIGHT) {
       obj.y = BOARD_HEIGHT - BOARD_HEIGHT;
     }
   }
-  function getScore(item){
-    if (item.x > boardWidth){
+  function getScore(item) {
+    if (item.x > boardWidth) {
       item.x = 250;
       item.y = 250;
       item.speedX = 0;
       item.speedX = Math.floor((Math.random() - 4 + -1) + 1);
       score('#scoreboard');
-      getScoreFeed('Player2');
+      getScoreFeed('Player1');
       winner++;
     }
-     if (item.x < 0) {
+    if (item.x < 0) {
       item.x = 250;
       item.y = 250;
       item.speed = 0;
       item.speedX = Math.floor((Math.random() * 3) + 1);
       score('#scoreboard2');
-      getScoreFeed('Player1')
+      getScoreFeed('Player2')
       winner2++;
     }
   }
-  function keepBallInBoard(item){
+  function keepBallInBoard(item) {
     if (item.y > ballBoardHeight) {
       item.speedY = Math.floor((Math.random() * -4) + -1);
       item.speedX++;
@@ -168,25 +162,27 @@ function runProgram() {
   }
   // scoreboard for the game ...
   function score(id) {
-    $(id).text('Players score : ' + (parseFloat($(id).text().replace(/^\D+/g, '')) + 1));
+    $(id).text((parseFloat($(id).text().replace(/^\D+/g, '')) + 1));
   }
   function CheckForWin(){
-    if (winner === 5) {
-      winner = 'Player1';
-      endGame(winner);
-    } else if (winner2 === 5) {
-      winner2 = 'Player2';
-      endGame(winner2);
+    const gameOver = 7;
+    if (winner === gameOver || winner2 === gameOver){
+        
     }
   }
-  function getScoreFeed(currentScorer){
-   document.getElementById('scoreFeed').innerHTML = currentScorer + ' has Just scored a goal';
+    
+    
+
+    
+  
+  function getScoreFeed(currentScorer) {
+    $('#scoreFeed').text('...' + currentScorer + ' has scored !');
   }
   function endGame(champ) {
-    // stop the interval timer
     alert(champ + ' has won this game');
-    clearInterval(interval);
+    $('#scoreFeed').text(champ + ' has won the Game !!');
     $(document).off();
+    clearInterval(interval);
   }
 }
 
